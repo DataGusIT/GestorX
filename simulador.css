@@ -1,0 +1,310 @@
+/* --- ESTRUTURA GERAL DA SIMULAÇÃO --- */
+body {
+    /* Usa as mesmas cores de fundo do seu site principal */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+    /* Previne scroll da página inteira */
+}
+
+.simulator-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* --- BARRA LATERAL --- */
+.simulator-sidebar {
+    width: 240px;
+    background-color: var(--surface-color);
+    /* Cor de superfície do seu site */
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+}
+
+.logo-link {
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.simulator-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.simulator-nav .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.simulator-nav .nav-item:hover {
+    background-color: var(--border-color);
+    color: var(--white);
+}
+
+.simulator-nav .nav-item.active {
+    background-color: rgba(0, 122, 255, 0.1);
+    color: var(--white);
+    border-left-color: var(--accent-color);
+}
+
+.simulator-nav .nav-item i {
+    width: 30px;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.simulator-main {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.page-content {
+    display: none;
+    /* Esconde todas as páginas por padrão */
+}
+
+.page-content.active {
+    display: block;
+    /* Mostra apenas a página ativa */
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.actions-group .btn {
+    margin-left: 1rem;
+}
+
+/* Estilos para tabelas */
+.table-container {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+thead {
+    background-color: #2d333b;
+    /* Um pouco mais escuro que a superfície */
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #2d333b;
+}
+
+.action-icons i {
+    cursor: pointer;
+    margin: 0 0.5rem;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+}
+
+.action-icons .fa-trash:hover {
+    color: #e53935;
+}
+
+.action-icons .fa-pencil-alt:hover {
+    color: var(--accent-color);
+}
+
+
+/* Componentes do Dashboard */
+.indicators-grid,
+.alerts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.indicator-card,
+.alert-card {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.indicator-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-secondary);
+}
+
+.indicator-card .value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.alert-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.alert-card .count {
+    font-size: 2rem;
+}
+
+.alert-card.low-stock {
+    border-left: 5px solid #29b6f6;
+}
+
+/* Azul */
+.alert-card.expiring {
+    border-left: 5px solid #ffa726;
+}
+
+/* Laranja */
+.alert-card.expired {
+    border-left: 5px solid #e53935;
+}
+
+/* Vermelho */
+
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+.fake-chart {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-secondary);
+}
+
+.section-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Barra de pesquisa */
+.search-and-filter-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-and-filter-bar input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+
+/* Mensagem para telas simplificadas */
+.placeholder-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    padding: 4rem;
+    background-color: var(--surface-color);
+    border-radius: 8px;
+}
+
+/* Estilos do Caixa (PDV) */
+.pdv-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.pdv-right {
+    background-color: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.pdv-total {
+    text-align: right;
+    margin: 1.5rem 0;
+}
+
+.pdv-total h3 {
+    font-size: 2.5rem;
+}
+
+.cash-status {
+    color: var(--text-secondary);
+}
+
+.cash-status .status-closed {
+    color: #e53935;
+    font-weight: bold;
+}

@@ -8,6 +8,8 @@
     <meta name="description"
         content="GestorX é um sistema de gestão de código aberto, gratuito e poderoso. Controle seu estoque, vendas e finanças com uma ferramenta construída pela comunidade, para a comunidade.">
 
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -24,15 +26,7 @@
     <header class="header">
         <div class="container">
             <a href="#" class="logo">
-                <svg width="180" height="45" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
-                    <g class="logo-cube">
-                        <path d="M10 10 L30 10 L40 20 L20 20 Z" fill="none" stroke="#cdd9e5" stroke-width="2" />
-                        <path d="M10 10 L10 30 L20 40 L20 20 Z" fill="none" stroke="#cdd9e5" stroke-width="2" />
-                        <path d="M20 40 L40 40 L40 20" fill="none" stroke="#cdd9e5" stroke-width="2" />
-                    </g>
-                    <text x="55" y="35" class="logo-text">GESTOR</text>
-                    <text x="160" y="35" class="logo-x">X</text>
-                </svg>
+                <img src="assets/img/GestorX (2).png" alt="Logo GestorX" class="logo-image">
             </a>
             <nav class="main-nav">
                 <ul>
@@ -75,9 +69,11 @@
                 <p class="subtitle animate-on-scroll">GestorX é o sistema de código aberto que devolve a você o controle
                     do seu negócio. Desenvolvido por uma comunidade apaixonada por eficiência.</p>
                 <div class="hero-buttons animate-on-scroll">
-                    <a href="#download" class="btn btn-primary btn-lg"><i class="fas fa-download"></i> Baixar Agora</a>
-                    <a href="#gallery" class="btn btn-secondary btn-lg"><i class="fas fa-camera"></i> Ver o Sistema em
-                        Ação</a>
+                    <a href="assets/instalador/SetupGestorX.exe" class="btn btn-primary btn-lg" download><i
+                            class="fas fa-download"></i> Baixar Agora</a>
+                    <a href="simulador.html" class="btn btn-secondary btn-lg"><i class="fas fa-desktop"></i> Testar
+                        Simulação</a>
+
                 </div>
             </div>
             <div class="hero-bg-animation"></div>
@@ -151,7 +147,7 @@
                     <div class="swiper-wrapper">
                         <!-- Slides -->
                         <div class="swiper-slide">
-                            <img src="/assets/img/dash.png" alt="Tela do Dashboard do GestorX">
+                            <img src="assets/img/dashboard.png" alt="Tela do Dashboard do GestorX">
                             <div class="slide-caption">Dashboard Principal</div>
                         </div>
                         <div class="swiper-slide">
@@ -159,16 +155,20 @@
                             <div class="slide-caption">Controle de Estoque</div>
                         </div>
                         <div class="swiper-slide">
-                            <img src="assets/img/fornecedores.png" alt="Tela de Controle de Estoque do GestorX">
-                            <div class="slide-caption">Controle de Forncedores</div>
+                            <img src="assets/img/fornecedores.png" alt="Tela de Controle de Fornecedores do GestorX">
+                            <div class="slide-caption">Controle de Fornecedores</div>
                         </div>
                         <div class="swiper-slide">
-                            <img src="assets/img/clientes.png" alt="Tela de Controle de Estoque do GestorX">
-                            <div class="slide-caption">Controle de Clientes</div>
+                            <img src="assets/img/clientes.png" alt="Tela de Gestão de Clientes do GestorX">
+                            <div class="slide-caption">Gestão de Clientes</div>
                         </div>
                         <div class="swiper-slide">
                             <img src="assets/img/caixa.png" alt="Tela da Frente de Caixa (PDV) do GestorX">
                             <div class="slide-caption">Frente de Caixa (PDV)</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/img/promocoes.png" alt="Tela do Módulo de Promoções do GestorX">
+                            <div class="slide-caption">Módulo de Promoções</div>
                         </div>
                     </div>
                     <!-- If we need pagination -->
@@ -235,11 +235,11 @@
         <section id="download" class="download">
             <div class="container text-center">
                 <h2 class="animate-on-scroll">Baixe a última versão do GestorX</h2>
-                <p class="animate-on-scroll">Disponível gratuitamente para Windows, macOS e Linux.</p>
+                <p class="animate-on-scroll">Disponível gratuitamente para Windows.</p>
                 <div class="download-buttons animate-on-scroll">
-                    <a href="#" class="btn-download"><i class="fab fa-windows"></i> Windows</a>
-                    <a href="#" class="btn-download"><i class="fab fa-apple"></i> macOS</a>
-                    <a href="#" class="btn-download"><i class="fab fa-linux"></i> Linux</a>
+                    <!-- BOTÕES DE DOWNLOAD APENAS PARA WINDOWS -->
+                    <a href="assets/instalador/SetupGestorX.exe" class="btn-download" download><i
+                            class="fab fa-windows"></i> Baixar para Windows</a>
                 </div>
                 <p class="github-release animate-on-scroll">
                     Ou veja todas as versões disponíveis em nosso <a
@@ -256,17 +256,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
+                    <!-- LOGO DO RODAPÉ ATUALIZADA -->
                     <a href="#" class="logo">
-                        <svg width="180" height="45" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg"
-                            class="logo-svg">
-                            <g class="logo-cube">
-                                <path d="M10 10 L30 10 L40 20 L20 20 Z" fill="none" stroke="#cdd9e5" stroke-width="2" />
-                                <path d="M10 10 L10 30 L20 40 L20 20 Z" fill="none" stroke="#cdd9e5" stroke-width="2" />
-                                <path d="M20 40 L40 40 L40 20" fill="none" stroke="#cdd9e5" stroke-width="2" />
-                            </g>
-                            <text x="55" y="35" class="logo-text">GESTOR</text>
-                            <text x="160" y="35" class="logo-x">X</text>
-                        </svg>
+                        <img src="assets/img/GestorX (2).png" alt="Logo GestorX" class="logo-image">
                     </a>
                     <p>Um projeto de código aberto para empoderar pequenos negócios.</p>
                 </div>

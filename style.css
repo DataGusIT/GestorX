@@ -140,28 +140,20 @@ a {
     cursor: pointer;
 }
 
-.logo-svg {
+.logo-image {
+    max-height: 45px;
+    /* MANTENHA a altura base para o layout */
+    width: auto;
+    display: block;
     transition: transform 0.3s ease;
+
+    /* AQUI ESTÁ A MÁGICA: Aumenta o logo em 40% visualmente */
+    transform: scale(3.0);
 }
 
-.logo-svg:hover {
-    transform: scale(1.05);
-}
-
-.logo-svg .logo-text,
-.logo-svg .logo-x {
-    font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.logo-svg .logo-text {
-    fill: var(--text-color);
-}
-
-.logo-svg .logo-x {
-    fill: var(--accent-color);
-    font-weight: 800;
+.logo-image:hover {
+    /* Mantém o efeito de hover, mas um pouco mais sutil */
+    transform: scale(1.5);
 }
 
 .header nav ul {
@@ -196,22 +188,27 @@ a {
 .mobile-nav {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(28, 33, 40, 0.98);
-    backdrop-filter: blur(10px);
+    background-color: var(--bg-color);
+    /* Fundo opaco para um look limpo */
     z-index: 1001;
+
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+    /* Estado inicial: invisível e não interativo */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .mobile-nav.active {
-    transform: translateX(0);
+    /* Estado ativo: visível e interativo */
+    opacity: 1;
+    visibility: visible;
 }
 
 .mobile-nav .menu-close {
@@ -223,23 +220,70 @@ a {
     color: var(--text-color);
     font-size: 2rem;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav .menu-close:hover {
+    transform: rotate(90deg);
 }
 
 .mobile-nav ul {
     list-style: none;
     text-align: center;
+    padding: 0;
 }
 
 .mobile-nav ul li {
-    margin: 2rem 0;
+    /* Estado inicial da animação dos links: invisível e deslocado para baixo */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Animação escalonada quando o menu está ativo */
+.mobile-nav.active ul li:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.mobile-nav.active ul li:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.mobile-nav.active ul li:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.mobile-nav.active ul li:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.mobile-nav.active ul li:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+/* Estado final da animação dos links */
+.mobile-nav.active ul li {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .mobile-nav ul li a {
     color: var(--white);
-    font-size: 2rem;
+    font-size: 1.8rem;
+    /* <-- TAMANHO AJUSTADO E EQUILIBRADO */
     font-weight: 600;
-    font-family: var(--font-family-headings);
+    display: inline-block;
+    padding: 0.25rem 0;
+    margin: 1rem 0;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
+
+.mobile-nav ul li a:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+    /* Efeito de zoom suave no hover */
+}
+
 
 /* --- SEÇÃO HERO --- */
 .hero {
@@ -654,6 +698,28 @@ section {
 
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 992px) {
+
+    /* Esconde a navegação de links do desktop */
+    .header .main-nav {
+        display: none;
+    }
+
+    /* Mostra o botão do menu hambúrguer */
+    .menu-toggle {
+        display: block;
+    }
+
+    .logo-image {
+        /* Retorna o logo ao seu tamanho normal (100%) em telas menores */
+        transform: scale(1);
+    }
+
+    .logo-image:hover {
+        /* Efeito de hover mais sutil para mobile, onde não há mouse */
+        transform: scale(1.05);
+    }
+
+    /* Outros ajustes que você já tinha */
     .pricing-grid {
         grid-template-columns: 1fr;
     }
@@ -677,11 +743,9 @@ section {
         font-size: 2rem;
     }
 
-    .header nav {
-        display: none;
+    .mobile-nav ul li a {
+        font-size: 1.8rem;
     }
-
-    /* Simplificação: esconder nav em telas pequenas */
 
     .footer-content {
         flex-direction: column;
@@ -691,4 +755,5 @@ section {
     .footer-logo p {
         margin: 1rem auto;
     }
+
 }
