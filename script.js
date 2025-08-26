@@ -5,15 +5,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuClose = document.querySelector('.menu-close');
     const mobileNav = document.querySelector('.mobile-nav');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+    const body = document.body; // <-- ADICIONADO
 
     // Abre o menu
     menuToggle.addEventListener('click', () => {
         mobileNav.classList.add('active');
+        body.classList.add('mobile-nav-active'); // <-- ADICIONADO
     });
 
     // Fecha o menu
     const closeMenu = () => {
         mobileNav.classList.remove('active');
+        body.classList.remove('mobile-nav-active'); // <-- ADICIONADO
     };
 
     menuClose.addEventListener('click', closeMenu);

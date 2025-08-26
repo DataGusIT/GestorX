@@ -34,6 +34,24 @@ body {
     padding: 0 20px;
 }
 
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--border-color);
+    /* Garante que o ícone também pegue a cor */
+    fill: var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border-color: var(--accent-color);
+    /* Adiciona o mesmo movimento do botão primário */
+    transform: translateY(-3px);
+    /* Adiciona um brilho sutil para um toque especial */
+    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.25);
+}
+
 h1,
 h2,
 h3 {
@@ -142,18 +160,31 @@ a {
 
 .logo-image {
     max-height: 45px;
-    /* MANTENHA a altura base para o layout */
+    /* Define a altura máxima da logo */
     width: auto;
+    /* A largura se ajusta automaticamente */
     display: block;
     transition: transform 0.3s ease;
-
-    /* AQUI ESTÁ A MÁGICA: Aumenta o logo em 40% visualmente */
-    transform: scale(3.0);
+    /* REMOVA a linha 'transform: scale(3.0);' que estava aqui */
 }
 
 .logo-image:hover {
-    /* Mantém o efeito de hover, mas um pouco mais sutil */
-    transform: scale(1.5);
+    /* Efeito de hover mais sutil */
+    transform: scale(1.1);
+}
+
+/* --- Estilo para a logo no menu mobile --- */
+.logo-mobile {
+    display: block;
+    margin-bottom: 3rem;
+    /* Adiciona um espaço abaixo da logo */
+}
+
+.logo-mobile .logo-image {
+    max-height: 60px;
+    /* Um pouco maior para se destacar no menu */
+    margin: 0 auto;
+    /* Centraliza a imagem */
 }
 
 .header nav ul {
@@ -187,19 +218,20 @@ a {
 /* --- MENU MOBILE OVERLAY --- */
 .mobile-nav {
     position: fixed;
-    top: 0;
+    /* MODIFICADO: O menu agora começa abaixo do header */
+    top: 77px;
+    /* ALTURA DO SEU HEADER (16px + 45px + 16px). Ajuste se necessário. */
     left: 0;
     width: 100%;
-    height: 100%;
+    /* MODIFICADO: A altura agora ocupa o espaço restante */
+    height: calc(100% - 77px);
     background-color: var(--bg-color);
-    /* Fundo opaco para um look limpo */
     z-index: 1001;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    /* Estado inicial: invisível e não interativo */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
@@ -211,16 +243,42 @@ a {
     visibility: visible;
 }
 
-.mobile-nav .menu-close {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
+/* --- ESTE É O BLOCO CORRETO, MANTENHA ELE --- */
+
+.mobile-nav {
+    position: fixed;
+    top: 77px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 77px);
+    background-color: var(--bg-color);
+    /* Esta linha garante o fundo sólido */
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.menu-close {
+    display: none;
     background: none;
     border: none;
     color: var(--text-color);
-    font-size: 2rem;
+    font-size: 1.8rem;
+    /* Tamanho um pouco maior para o X */
     cursor: pointer;
-    transition: transform 0.3s ease;
+}
+
+body.mobile-nav-active .menu-toggle {
+    display: none;
+}
+
+/* ...e mostre o botão de fechar (X) */
+body.mobile-nav-active .menu-close {
+    display: block;
 }
 
 .mobile-nav .menu-close:hover {
@@ -699,6 +757,11 @@ section {
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 992px) {
 
+    .header .container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
     /* Esconde a navegação de links do desktop */
     .header .main-nav {
         display: none;
@@ -735,6 +798,18 @@ section {
 }
 
 @media (max-width: 768px) {
+    .footer-logo {
+        /* Transforma o container da logo em flex para alinhar o conteúdo */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo .logo-image {
+        max-height: 55px;
+        /* Aumente este valor como desejar */
+    }
+
     h1 {
         font-size: 2.5rem;
     }
